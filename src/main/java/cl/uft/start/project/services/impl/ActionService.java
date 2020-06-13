@@ -108,7 +108,7 @@ public class ActionService implements IActionService {
 		try {
 			template = new InputStreamReader(templateController.getInputStream());
 			if (template == null) {
-				return salida.fallo("No se pudo leer leer el template");
+				return salida.fallo("No se pudo leer el template");
 			}
 		} catch (Exception e) {
 			log.error(e.getMessage());
@@ -203,7 +203,7 @@ public class ActionService implements IActionService {
 			codigo = remplazarContenido(archivo, out);
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
-			return salida.fallo("Se produjo un error al intentar leer el template de la entidad");
+			return salida.fallo("Se produjo un error al intentar leer el template");
 		}
 
 		try {
@@ -573,7 +573,7 @@ public class ActionService implements IActionService {
 		switch (tipoVariable.toLowerCase()) {
 		case "string":
 			return true;
-		case "snteger":
+		case "integer":
 			return true;
 		case "int":
 			return true;
