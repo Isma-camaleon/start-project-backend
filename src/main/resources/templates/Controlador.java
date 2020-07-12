@@ -7,7 +7,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,7 +34,8 @@ public class __CLASS__RestController {
 	}
 
 	@GetMapping("/id/active")
-	public ResponseEntity<ResultadoProc<__CLASS__>> findByIdAndActiveTrue(@PathVariable __TIPO_VARIABLE_PK__ __CLASS_MIN__Id) {
+	public ResponseEntity<ResultadoProc<__CLASS__>> findByIdAndActiveTrue(
+			@PathVariable __TIPO_VARIABLE_PK__ __CLASS_MIN__Id) {
 		ResultadoProc<__CLASS__> salida = __CLASS_MIN__Service.findByIdAndActivoTrue(__CLASS_MIN__Id);
 		return new ResponseEntity<ResultadoProc<__CLASS__>>(salida, HttpStatus.OK);
 	}
@@ -48,6 +48,14 @@ public class __CLASS__RestController {
 		return new ResponseEntity<ResultadoProc<Page<__CLASS__>>>(salida, HttpStatus.OK);
 	}
 
+	@PostMapping("/page-all-by-search")
+	public ResponseEntity<ResultadoProc<Page<__CLASS__>>> findAllPaginatedBySearch(
+			@RequestBody SearchPagination<String> searchPagination) {
+		PageRequest pageable = searchPagination.getPageRequest();
+		String search = searchPagination.getSeek();
+		ResultadoProc<Page<__CLASS__>> salida = __CLASS_MIN__Service.findAllPaginatedBySearch(pageable, search);
+		return new ResponseEntity<ResultadoProc<Page<__CLASS__>>>(salida, HttpStatus.OK);
+	}
 
 	@PostMapping
 	public ResponseEntity<ResultadoProc<__CLASS__>> save(@RequestBody __CLASS__ __CLASS_MIN__) {

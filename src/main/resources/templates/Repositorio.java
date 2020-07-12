@@ -12,15 +12,15 @@ import __PACKAGE_ENTITY__.__CLASS__;
 @Repository
 public interface __CLASS__Repository extends JpaRepository<__CLASS__, __TIPO_VARIABLE_OBJ__> {
 
-	
 	/**
-	 * Retorna un {@link Page} de todos los __CLASS_MIN__s que coinciden con al query
+	 * Retorna un {@link Page} de todos los __CLASS_MIN__s que coinciden con al
+	 * query
 	 * 
-	 * @param query    Consulta a buscar (ejemplo: "completo")
+	 * @param search   Texto a buscar
 	 * @param pageable {@link PageRequest}
 	 * @return Page&lt;__CLASS__&gt;
 	 */
 	@Query("select p from __CLASS__ p where p.__ATRIBUTO_BUSCADO__ like %?1%")
-	Page<__CLASS__> findAllByQuery(String query, Pageable pageable);
+	Page<__CLASS__> findAllBySearch(String search, Pageable pageable);
 
 }

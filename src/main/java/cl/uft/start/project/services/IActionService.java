@@ -1,7 +1,5 @@
 package cl.uft.start.project.services;
 
-import java.util.List;
-
 import cl.uft.start.project.models.Archivo;
 import cl.uft.start.project.models.BaseArchivo;
 import cl.uft.start.project.utils.ResultadoProc;
@@ -13,10 +11,10 @@ public interface IActionService {
 	 * 
 	 * @param archivo {@link BaseArchivo} <br>
 	 *                <ul>
-	 *                <li>{@link String} nombreClase</li>
-	 *                <li>{@link String} packageArchivo</li>
-	 *                <li>{@link String} pathArchivo</li>
-	 *                <li>{@link List} of {@link String} atributos</li>
+	 *                <li>String nombreClase</li>
+	 *                <li>String packageArchivo</li>
+	 *                <li>String pathArchivo</li>
+	 *                <li>List of String atributos</li>
 	 *                </ul>
 	 * @return ResultadoProc&lt;Archivo&gt;
 	 */

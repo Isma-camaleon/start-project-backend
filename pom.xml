@@ -19,12 +19,24 @@
 		<java.version>1.8</java.version>
 	</properties>
 
+	<repositories>
+		<repository>
+			<id>repo-uft</id>
+			<name>repositorio UFT </name>
+			<url>http://repo.uft.cl:8080/repository/internal/</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>cl.uft</groupId>
+			<artifactId>cl.uft.commons</artifactId>
+			<version>1.0.2-RELEASE</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>

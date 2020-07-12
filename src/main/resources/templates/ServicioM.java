@@ -73,19 +73,25 @@ public class __CLASS__Service implements I__CLASS__Service {
 		return salida.build();
 	}
 
+	@Override
+	public ResultadoProc<Page<__CLASS__>> findAllPaginatedBySearch(PageRequest pageable, String search) {
+		ResultadoProc.Builder<Page<__CLASS__>> salida = new ResultadoProc.Builder<Page<__CLASS__>>();
+		try {
+			Page<__CLASS__> __CLASS_MIN__s = __CLASS_MIN__Repository.findAllBySearch(search, pageable);
+			salida.exitoso(__CLASS_MIN__s);
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+			salida.fallo("Se produjo un error inesperado al intentar listar los __CLASS_MIN__s");
+		}
+		return salida.build();
+	}
 
 	@Override
 	public ResultadoProc<__CLASS__> save(__CLASS__ __CLASS_MIN__) {
 		ResultadoProc.Builder<__CLASS__> salida = new ResultadoProc.Builder<__CLASS__>();
 		try {
-			String mensaje = "";
-			if (__CLASS_MIN__.getId() == 0) {
-				mensaje = "__CLASS__ registrado correctamente";
-				__CLASS_MIN__Repository.save(__CLASS_MIN__);
-				salida.exitoso(__CLASS_MIN__, mensaje);
-			} else {
-				salida.fallo("Se está intentando actualizar un __CLASS_MIN__, esta acción no esta permitida");
-			}
+			__CLASS_MIN__Repository.save(__CLASS_MIN__);
+			salida.exitoso(__CLASS_MIN__, "__CLASS__ registrado correctamente");
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
 			salida.fallo("Se produjo un error inesperado al intentar registrar el __CLASS_MIN__");
@@ -98,14 +104,8 @@ public class __CLASS__Service implements I__CLASS__Service {
 	public ResultadoProc<__CLASS__> update(__CLASS__ __CLASS_MIN__) {
 		ResultadoProc.Builder<__CLASS__> salida = new ResultadoProc.Builder<__CLASS__>();
 		try {
-			String mensaje = "";
-			if (__CLASS_MIN__.getId() > 0) {
-				mensaje = "__CLASS__ actualizado correctamente";
-				__CLASS_MIN__Repository.save(__CLASS_MIN__);
-				salida.exitoso(__CLASS_MIN__, mensaje);
-			} else {
-				salida.fallo("Se está intentando registrar un nuevo __CLASS_MIN__, esta acción no esta permitida");
-			}
+			__CLASS_MIN__Repository.save(__CLASS_MIN__);
+			salida.exitoso(__CLASS_MIN__, "__CLASS__ actualizado correctamente");
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
 			salida.fallo("Se produjo un error inesperado al intentar actualizar el __CLASS_MIN__");
@@ -113,31 +113,36 @@ public class __CLASS__Service implements I__CLASS__Service {
 		return salida.build();
 	}
 
-//	@Override
-//	public ResultadoProc<__CLASS__> changeState(__TIPO_VARIABLE_PK__ __CLASS_MIN__Id) {
-//		ResultadoProc.Builder<__CLASS__> salida = new ResultadoProc.Builder<__CLASS__>();
-//		try {
-//			String mensaje = "";
-//			__CLASS__ __CLASS_MIN__Original = this.findById(__CLASS_MIN__Id).getSalida();
-//			if (__CLASS_MIN__Id > 0) {
-//				if (__CLASS_MIN__Original == null) {
-//					salida.fallo("No se econtró el __CLASS_MIN__");
-//					return salida.build();
-//				}
-//				__CLASS_MIN__Original.setActivo(!__CLASS_MIN__Original.isActivo());
-//				if (__CLASS_MIN__Original.isActivo()) {
-//					mensaje = "El __CLASS_MIN__ " + __CLASS_MIN__Original.getDescripcion() + " está activo";
-//				} else {
-//					mensaje = "El __CLASS_MIN__ " + __CLASS_MIN__Original.getDescripcion() + " está inactivo";
-//				}
-//			}
-//			__CLASS_MIN__Repository.save(__CLASS_MIN__Original);
-//			salida.exitoso(__CLASS_MIN__Original, mensaje);
-//		} catch (Exception e) {
-//			log.error(e.getMessage(), e);
-//			salida.fallo("Se produjo un error inesperado al intentar cambiar el estado del __CLASS_MIN__");
-//		}
-//		return salida.build();
-//	}
+	// @Override
+	// public ResultadoProc<__CLASS__> changeState(__TIPO_VARIABLE_PK__
+	// __CLASS_MIN__Id) {
+	// ResultadoProc.Builder<__CLASS__> salida = new
+	// ResultadoProc.Builder<__CLASS__>();
+	// try {
+	// String mensaje = "";
+	// __CLASS__ __CLASS_MIN__Original = this.findById(__CLASS_MIN__Id).getSalida();
+	// if (__CLASS_MIN__Id > 0) {
+	// if (__CLASS_MIN__Original == null) {
+	// salida.fallo("No se econtró el __CLASS_MIN__");
+	// return salida.build();
+	// }
+	// __CLASS_MIN__Original.setActivo(!__CLASS_MIN__Original.isActivo());
+	// if (__CLASS_MIN__Original.isActivo()) {
+	// mensaje = "El __CLASS_MIN__ " + __CLASS_MIN__Original.getDescripcion() + "
+	// está activo";
+	// } else {
+	// mensaje = "El __CLASS_MIN__ " + __CLASS_MIN__Original.getDescripcion() + "
+	// está inactivo";
+	// }
+	// }
+	// __CLASS_MIN__Repository.save(__CLASS_MIN__Original);
+	// salida.exitoso(__CLASS_MIN__Original, mensaje);
+	// } catch (Exception e) {
+	// log.error(e.getMessage(), e);
+	// salida.fallo("Se produjo un error inesperado al intentar cambiar el estado
+	// del __CLASS_MIN__");
+	// }
+	// return salida.build();
+	// }
 
 }

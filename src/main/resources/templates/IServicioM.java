@@ -41,11 +41,22 @@ public interface I__CLASS__Service {
 	 * 
 	 * @param pageable Entidad {@link PageRequest} que contiene los datos de la
 	 *                 paginación
-	 * @return ResultadoProc&lt;Page&lt;__CLASS__&gt;&gt; Una página de __CLASS_MIN__s
+	 * @return ResultadoProc&lt;Page&lt;__CLASS__&gt;&gt; Una página de
+	 *         __CLASS_MIN__s
 	 */
 	ResultadoProc<Page<__CLASS__>> findAllPaginated(PageRequest pageable);
 
-	
+	/**
+	 * Retorna un {@link Page} de todos los __CLASS_MIN__s registrados
+	 * 
+	 * @param pageable Entidad {@link PageRequest} que contiene los datos de la
+	 *                 paginación
+	 * @param search   Texto a buscar
+	 * @return ResultadoProc&lt;Page&lt;__CLASS__&gt;&gt; Una página de
+	 *         __CLASS_MIN__s
+	 */
+	ResultadoProc<Page<__CLASS__>> findAllPaginatedBySearch(PageRequest pageable, String search);
+
 	/**
 	 * Cambia el estado del __CLASS_MIN__ <br>
 	 * Si activo es <code><b>true</b></code> lo cambia a <code><b>false</b></code>
@@ -54,10 +65,10 @@ public interface I__CLASS__Service {
 	 * <br>
 	 * 
 	 * @param __CLASS_MIN__Id (Id del __CLASS_MIN__)
-	 * @return ResultadoProc&lt;__CLASS__&gt; El __CLASS_MIN__ al que le fue cambiado el
-	 *         estado
+	 * @return ResultadoProc&lt;__CLASS__&gt; El __CLASS_MIN__ al que le fue
+	 *         cambiado el estado
 	 */
-//	ResultadoProc<__CLASS__> changeState(__TIPO_VARIABLE_PK__ __CLASS_MIN__Id);
+	// ResultadoProc<__CLASS__> changeState(__TIPO_VARIABLE_PK__ __CLASS_MIN__Id);
 
 	/**
 	 * Actualiza un __CLASS_MIN__

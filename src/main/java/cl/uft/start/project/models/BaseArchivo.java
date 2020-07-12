@@ -23,6 +23,7 @@ public class BaseArchivo implements Serializable {
 	private String pathDirectorioBase;
 	private String packageBase;
 	private String contenido;
+	private Option option;
 
 	private List<Atributo> atributos;
 
