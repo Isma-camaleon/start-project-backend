@@ -58,16 +58,16 @@ public class Directorio implements Serializable {
 				if (this.esFile) {
 					continue;
 				}
-				if (directorio.path.indexOf("repositories") != -1) {
+				if (directorio.path.indexOf("repositories") != -1 || directorio.path.indexOf("repository") != -1) {
 					isReposiroty = true;
 				}
-				if (directorio.path.indexOf("entities") != -1) {
+				if (directorio.path.indexOf("entities") != -1 || directorio.path.indexOf("entity") != -1) {
 					isEntity = true;
 				}
-				if (directorio.path.indexOf("controllers") != -1) {
+				if (directorio.path.indexOf("controllers") != -1 || directorio.path.indexOf("controller") != -1) {
 					isController = true;
 				}
-				if (directorio.path.indexOf("services") != -1) {
+				if (directorio.path.indexOf("services") != -1 || directorio.path.indexOf("service") != -1) {
 					isService = true;
 				}
 			}
@@ -101,6 +101,18 @@ public class Directorio implements Serializable {
 		}
 		if (path.indexOf("/utils") != -1) {
 			path = path.substring(0, path.indexOf("/utils"));
+		}
+		if (path.indexOf("/repository") != -1) {
+			path = path.substring(0, path.indexOf("/repository"));
+		}
+		if (path.indexOf("/controller") != -1) {
+			path = path.substring(0, path.indexOf("/controller"));
+		}
+		if (path.indexOf("/service") != -1) {
+			path = path.substring(0, path.indexOf("/service"));
+		}
+		if (path.indexOf("/entity") != -1) {
+			path = path.substring(0, path.indexOf("/entity"));
 		}
 		this.packageBase = path.replaceAll("/", ".");
 	}
